@@ -1,9 +1,10 @@
 # tools
-    Include some encrypt and decrypt tools, use algorithm like des, 3des, aes. Some abstract algorithm also contained in this package.
+    Include some encrypt and decrypt algorithms. 
+    Some abstract algorithm also contained in this package.
 
-## Supported encrypt and decrypt algorithm
+## Supported encrypt and decrypt algorithms
     aes, des, 3des, base64
-## Supported abstract algorithm
+## Supported abstract algorithms
     md5_16, md5_32, sha1
 ## Demo
 Encrypt and decrypt file
@@ -42,6 +43,7 @@ func main() {
 ```
 
 Encrypt and decrypt byte array
+
 ```Go
 func Encrypt(data []byte, typ string, key []byte) ([]byte, error) {
 	....
