@@ -1,7 +1,6 @@
 # tools
-    Include some encrypt and decrypt algorithms. 
-    Some abstract algorithm also contained in this package.
-
+    Up to now, this package contains some encrypt, decrypt and abstract algorithms. 
+    In the future, I will add more useful tools.
 ## Supported encrypt and decrypt algorithms
     aes, des, 3des, base64
 ## Supported abstract algorithms
