@@ -8,7 +8,7 @@
 ## Demo
 Encrypt and decrypt file
 
-```
+```Go
 package main
 
 import (
