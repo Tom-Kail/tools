@@ -15,7 +15,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/Tom-kail/tools"
+	"github.com/Tom-Kail/tools"
 )
 
 func main() {
