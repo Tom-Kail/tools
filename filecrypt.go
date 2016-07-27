@@ -192,7 +192,7 @@ func EncryptFileByAES(src, dsc, key string) error {
 	return encodefile(src, dsc, getpasskey(key))
 }
 func DecryptFileByAES(src, dsc, key string) error {
-	return decodefile(src, src, getpasskey(key))
+	return decodefile(src, dsc, getpasskey(key))
 }
 
 func decodefile(inputfile, outputfile string, passkey []byte) error {
