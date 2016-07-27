@@ -196,6 +196,7 @@ func DecryptFileByAES(src, dsc, key string) error {
 }
 
 func decodefile(inputfile, outputfile string, passkey []byte) error {
+	fmt.Println("into decodefile")
 	in, err := os.Open(inputfile)
 	if err != nil {
 		fmt.Printf("%s open error\n", inputfile)
@@ -206,12 +207,10 @@ func decodefile(inputfile, outputfile string, passkey []byte) error {
 	var fileversion int32
 	err = binary.Read(in, binary.LittleEndian, &fileversion)
 	if err != nil {
-		fmt.Printf("version read error\n")
-		return err
+		return errors.New("version read error\n")
 	}
 	if fileversion != version {
-		fmt.Printf("file version error")
-		return err
+		return errors.New("file version error\n")
 	}
 
 	//===============read decoded random key
@@ -233,12 +232,12 @@ func decodefile(inputfile, outputfile string, passkey []byte) error {
 		fmt.Printf("cipher create error\n")
 		return err
 	}
-
+	fmt.Println("into decodefile2")
 	//===============read length of file name
 	b := make([]byte, c.BlockSize())
 	n, err = in.Read(b)
 	if n < c.BlockSize() || err != nil {
-		fmt.Printf("read file len error")
+		fmt.Printf("read file len error\n")
 		return err
 	}
 	c.Decrypt(b, b)
@@ -250,7 +249,7 @@ func decodefile(inputfile, outputfile string, passkey []byte) error {
 	}
 	var filenamelen int32
 	binary.Read(buf, binary.LittleEndian, &filenamelen)
-
+	fmt.Println("into decodefile3")
 	//===============read file name and file length
 	var filelen int64
 	filename := make([]byte, filenamelen)
@@ -280,6 +279,7 @@ func decodefile(inputfile, outputfile string, passkey []byte) error {
 	//	out, err := os.Create(outputdir + string(filename))
 
 	out, err := os.Create(outputfile)
+	fmt.Printf("outputfile:%s\n", outputfile)
 	if err != nil {
 		return err
 	}
