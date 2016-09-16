@@ -16,7 +16,7 @@ import (
 var version = int32(0)
 
 func EncryptFile(src, dst, typ string, key []byte, bufSize int) error {
-	bufSize = 1024
+	bufSize = 1024 //如果解密中的bufSize和加密中的不一样，会导致加密后的文件解密失败
 	sf, err := os.Open(src)
 	if err != nil {
 		return err
@@ -57,7 +57,7 @@ func EncryptFile(src, dst, typ string, key []byte, bufSize int) error {
 }
 
 func DecryptFile(src, dst, typ string, key []byte, bufSize int) error {
-	bufSize = 1024
+	bufSize = 1024 //如果解密中的bufSize和加密中的不一样，会导致加密后的文件解密失败
 	sf, err := os.Open(src)
 	if err != nil {
 		return err
