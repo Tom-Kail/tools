@@ -16,6 +16,7 @@ import (
 var version = int32(0)
 
 func EncryptFile(src, dst, typ string, key []byte, bufSize int) error {
+	bufSize = 1024
 	sf, err := os.Open(src)
 	if err != nil {
 		return err
@@ -56,6 +57,7 @@ func EncryptFile(src, dst, typ string, key []byte, bufSize int) error {
 }
 
 func DecryptFile(src, dst, typ string, key []byte, bufSize int) error {
+	bufSize = 1024
 	sf, err := os.Open(src)
 	if err != nil {
 		return err
